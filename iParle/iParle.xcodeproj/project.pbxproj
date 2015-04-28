@@ -132,29 +132,14 @@
 		1562E75C1AF034D600BF7BF3 /* iParle */ = {
 			isa = PBXGroup;
 			children = (
-				1562E7C21AF0388400BF7BF3 /* iParle-Bridging-Header.h */,
 				1562E7821AF0355500BF7BF3 /* AppDelegate.swift */,
-				1562E7831AF0355500BF7BF3 /* Blurb.swift */,
-				1562E7841AF0355500BF7BF3 /* BlurbTableViewController.swift */,
-				1562E7851AF0355500BF7BF3 /* BlurbViewController.swift */,
 				1562E7861AF0355500BF7BF3 /* Constants.swift */,
-				1562E7871AF0355500BF7BF3 /* Convo.swift */,
-				1562E7881AF0355500BF7BF3 /* ConvoSettingsViewController.swift */,
 				1562E78A1AF0355500BF7BF3 /* CoreDataManager.swift */,
-				1562E78B1AF0355500BF7BF3 /* Group.swift */,
-				1562E78C1AF0355500BF7BF3 /* GroupDataController.swift */,
-				1562E78D1AF0355500BF7BF3 /* GroupTableViewController.swift */,
-				1562E78E1AF0355500BF7BF3 /* ManagedBlurb.h */,
-				1562E78F1AF0355500BF7BF3 /* ManagedBlurb.m */,
-				1562E7901AF0355500BF7BF3 /* ManagedConvo.h */,
-				1562E7911AF0355500BF7BF3 /* ManagedConvo.m */,
-				1562E7921AF0355500BF7BF3 /* ManagedGroup.h */,
-				1562E7931AF0355500BF7BF3 /* ManagedGroup.m */,
 				1562E7941AF0355500BF7BF3 /* NetworkManager.swift */,
 				1562E7951AF0355500BF7BF3 /* UserAccessViewController.swift */,
-				1562E7691AF034D600BF7BF3 /* Images.xcassets */,
-				1562E76B1AF034D600BF7BF3 /* LaunchScreen.xib */,
-				1562E7611AF034D600BF7BF3 /* iParle.xcdatamodeld */,
+				1562E7C31AF03ACC00BF7BF3 /* Blurbs (Messages) */,
+				1562E7C41AF03AD800BF7BF3 /* Convos (Conversations) */,
+				1562E7C51AF03AF200BF7BF3 /* Groups */,
 				1562E75D1AF034D600BF7BF3 /* Supporting Files */,
 			);
 			path = iParle;
@@ -164,8 +149,47 @@
 			isa = PBXGroup;
 			children = (
 				1562E75E1AF034D600BF7BF3 /* Info.plist */,
+				1562E7691AF034D600BF7BF3 /* Images.xcassets */,
+				1562E7C21AF0388400BF7BF3 /* iParle-Bridging-Header.h */,
+				1562E7611AF034D600BF7BF3 /* iParle.xcdatamodeld */,
+				1562E76B1AF034D600BF7BF3 /* LaunchScreen.xib */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1562E7C31AF03ACC00BF7BF3 /* Blurbs (Messages) */ = {
+			isa = PBXGroup;
+			children = (
+				1562E78E1AF0355500BF7BF3 /* ManagedBlurb.h */,
+				1562E78F1AF0355500BF7BF3 /* ManagedBlurb.m */,
+				1562E7831AF0355500BF7BF3 /* Blurb.swift */,
+				1562E7841AF0355500BF7BF3 /* BlurbTableViewController.swift */,
+				1562E7851AF0355500BF7BF3 /* BlurbViewController.swift */,
+			);
+			name = "Blurbs (Messages)";
+			sourceTree = "<group>";
+		};
+		1562E7C41AF03AD800BF7BF3 /* Convos (Conversations) */ = {
+			isa = PBXGroup;
+			children = (
+				1562E7871AF0355500BF7BF3 /* Convo.swift */,
+				1562E7881AF0355500BF7BF3 /* ConvoSettingsViewController.swift */,
+				1562E7901AF0355500BF7BF3 /* ManagedConvo.h */,
+				1562E7911AF0355500BF7BF3 /* ManagedConvo.m */,
+			);
+			name = "Convos (Conversations)";
+			sourceTree = "<group>";
+		};
+		1562E7C51AF03AF200BF7BF3 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				1562E78B1AF0355500BF7BF3 /* Group.swift */,
+				1562E78C1AF0355500BF7BF3 /* GroupDataController.swift */,
+				1562E78D1AF0355500BF7BF3 /* GroupTableViewController.swift */,
+				1562E7921AF0355500BF7BF3 /* ManagedGroup.h */,
+				1562E7931AF0355500BF7BF3 /* ManagedGroup.m */,
+			);
+			name = Groups;
 			sourceTree = "<group>";
 		};
 		317B733CC71487627DCF0674 /* Pods */ = {
