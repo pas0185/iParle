@@ -50,7 +50,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         self.fetchGroups()
         
         // Logo on Navigation Bar
-        let image = UIImage(named: "parlé-logo-purple")
+        let image = UIImage(named: "parlé-logo")
         let imageView = UIImageView(image: image)
         navigationItem.titleView = imageView
         

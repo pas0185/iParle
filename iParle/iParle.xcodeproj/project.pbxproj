@@ -41,6 +41,7 @@
 		1562E7C01AF037B000BF7BF3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1562E7BF1AF037B000BF7BF3 /* QuartzCore.framework */; };
 		8A40367273CF9216B08E5FD0 /* libPods-iParle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFB4A703D7F48D6D5A1C5F8 /* libPods-iParle.a */; };
 		CB2983991AF03FAE00B6D96B /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB2983981AF03FAE00B6D96B /* Keys.plist */; };
+		CB29839B1AF0424E00B6D96B /* AppIcon in Resources */ = {isa = PBXBuildFile; fileRef = CB29839A1AF0424E00B6D96B /* AppIcon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		6E85BD48E23AF96381CBAA90 /* Pods-iParle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iParle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iParle/Pods-iParle.debug.xcconfig"; sourceTree = "<group>"; };
 		7CFB4A703D7F48D6D5A1C5F8 /* libPods-iParle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iParle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2983981AF03FAE00B6D96B /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		CB29839A1AF0424E00B6D96B /* AppIcon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		1562E75D1AF034D600BF7BF3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB29839A1AF0424E00B6D96B /* AppIcon */,
 				1562E75E1AF034D600BF7BF3 /* Info.plist */,
 				1562E7691AF034D600BF7BF3 /* Images.xcassets */,
 				1562E7C21AF0388400BF7BF3 /* iParle-Bridging-Header.h */,
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB2983991AF03FAE00B6D96B /* Keys.plist in Resources */,
+				CB29839B1AF0424E00B6D96B /* AppIcon in Resources */,
 				1562E76D1AF034D600BF7BF3 /* LaunchScreen.xib in Resources */,
 				1562E76A1AF034D600BF7BF3 /* Images.xcassets in Resources */,
 			);

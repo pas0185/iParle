@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import ParseUI
 
 class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate  {
     
@@ -20,6 +19,11 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
             var logInViewController:PFLogInViewController = PFLogInViewController()
             logInViewController.fields = (PFLogInFields.Facebook | PFLogInFields.LogInButton | PFLogInFields.PasswordForgotten | PFLogInFields.UsernameAndPassword | PFLogInFields.SignUpButton)
             logInViewController.delegate = self
+            
+            let image = UIImage(named: "mainlogo")
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = UIViewContentMode.ScaleAspectFit
+            logInViewController.logInView!.logo = imageView
     
             self.navigationController?.presentViewController(logInViewController, animated:true, completion: nil)
         }

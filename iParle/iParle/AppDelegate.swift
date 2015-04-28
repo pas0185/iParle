@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-//import ParseUI
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
