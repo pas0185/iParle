@@ -31,9 +31,10 @@ class ConvoSettingsViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
         
         let addUser = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        addUser.frame = CGRectMake(100, 100, 100, 100)
+        addUser.frame = CGRectMake(50, 150, 100, 20)
         addUser.center = self.view.center
-        addUser.backgroundColor = UIColor.greenColor()
+        addUser.backgroundColor = UIColor.blueColor()
+        addUser.textColor = UIColor.whiteColor()
         addUser.setTitle("Add User", forState: UIControlState.Normal)
         addUser.addTarget(self, action: "addUserButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
         
