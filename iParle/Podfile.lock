@@ -1,0 +1,56 @@
+PODS:
+  - Bolts (1.1.5):
+    - Bolts/AppLinks (= 1.1.5)
+    - Bolts/Tasks (= 1.1.5)
+  - Bolts/AppLinks (1.1.5):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.1.5)
+  - Facebook-iOS-SDK (3.23.2):
+    - Bolts (~> 1.0)
+  - FBSDKCoreKit (4.0.1):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc (= 4.0.1)
+    - FBSDKCoreKit/no-arc (= 4.0.1)
+  - FBSDKCoreKit/arc (4.0.1):
+    - Bolts (~> 1.1)
+  - FBSDKCoreKit/no-arc (4.0.1):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc
+  - FBSDKLoginKit (4.0.1):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.0.1):
+    - FBSDKCoreKit
+  - JSQMessagesViewController (7.0.1):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - Parse (1.7.1):
+    - Bolts (~> 1.1)
+  - ParseFacebookUtils (1.7.1):
+    - Facebook-iOS-SDK (~> 3.23)
+    - Parse (~> 1.7.1)
+  - ParseUI (1.1.3):
+    - Parse (~> 1.7)
+
+DEPENDENCIES:
+  - Facebook-iOS-SDK
+  - FBSDKCoreKit (~> 4.0)
+  - FBSDKLoginKit (~> 4.0)
+  - FBSDKShareKit (~> 4.0)
+  - JSQMessagesViewController (= 7.0.1)
+  - Parse (= 1.7.1)
+  - ParseFacebookUtils (= 1.7.1)
+  - ParseUI
+
+SPEC CHECKSUMS:
+  Bolts: aac24961496d504aa56fc267cde95162a71bac39
+  Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
+  FBSDKCoreKit: a69aaad8712c1de6b370c70ddd9db02eb1dcb16c
+  FBSDKLoginKit: f0be76ce9e06d52f29051e38c7318d8b28030a05
+  FBSDKShareKit: 349d59da6a4d37e29d20030299089cfb0ac32a28
+  JSQMessagesViewController: 03fba8a3021a3ddc1c91847f180ffe549f2e8cf2
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Parse: fa8ec29de6d82035635986c11946299fb1b38316
+  ParseFacebookUtils: fa09adf78372b589163b5a71a34d6ebc7eb83395
+  ParseUI: 1a68e9cebc3bd458eed9605ce7b33d7cc082f473
+
+COCOAPODS: 0.36.0
