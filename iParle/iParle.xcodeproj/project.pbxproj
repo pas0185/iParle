@@ -7,48 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1562E7601AF034D600BF7BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E75F1AF034D600BF7BF3 /* AppDelegate.swift */; };
 		1562E7631AF034D600BF7BF3 /* iParle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7611AF034D600BF7BF3 /* iParle.xcdatamodeld */; };
-		1562E7651AF034D600BF7BF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7641AF034D600BF7BF3 /* ViewController.swift */; };
-		1562E7681AF034D600BF7BF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1562E7661AF034D600BF7BF3 /* Main.storyboard */; };
 		1562E76A1AF034D600BF7BF3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1562E7691AF034D600BF7BF3 /* Images.xcassets */; };
 		1562E76D1AF034D600BF7BF3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1562E76B1AF034D600BF7BF3 /* LaunchScreen.xib */; };
-		1562E7791AF034D600BF7BF3 /* iParleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7781AF034D600BF7BF3 /* iParleTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1562E7731AF034D600BF7BF3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1562E7521AF034D600BF7BF3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1562E7591AF034D600BF7BF3;
-			remoteInfo = iParle;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1562E75A1AF034D600BF7BF3 /* iParle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iParle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1562E75E1AF034D600BF7BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1562E75F1AF034D600BF7BF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1562E7621AF034D600BF7BF3 /* iParle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iParle.xcdatamodel; sourceTree = "<group>"; };
-		1562E7641AF034D600BF7BF3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1562E7671AF034D600BF7BF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1562E7691AF034D600BF7BF3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1562E76C1AF034D600BF7BF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		1562E7721AF034D600BF7BF3 /* iParleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iParleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1562E7771AF034D600BF7BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1562E7781AF034D600BF7BF3 /* iParleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iParleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1562E7571AF034D600BF7BF3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1562E76F1AF034D600BF7BF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,7 +35,6 @@
 			isa = PBXGroup;
 			children = (
 				1562E75C1AF034D600BF7BF3 /* iParle */,
-				1562E7751AF034D600BF7BF3 /* iParleTests */,
 				1562E75B1AF034D600BF7BF3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				1562E75A1AF034D600BF7BF3 /* iParle.app */,
-				1562E7721AF034D600BF7BF3 /* iParleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,9 +50,6 @@
 		1562E75C1AF034D600BF7BF3 /* iParle */ = {
 			isa = PBXGroup;
 			children = (
-				1562E75F1AF034D600BF7BF3 /* AppDelegate.swift */,
-				1562E7641AF034D600BF7BF3 /* ViewController.swift */,
-				1562E7661AF034D600BF7BF3 /* Main.storyboard */,
 				1562E7691AF034D600BF7BF3 /* Images.xcassets */,
 				1562E76B1AF034D600BF7BF3 /* LaunchScreen.xib */,
 				1562E7611AF034D600BF7BF3 /* iParle.xcdatamodeld */,
@@ -94,23 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				1562E75E1AF034D600BF7BF3 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1562E7751AF034D600BF7BF3 /* iParleTests */ = {
-			isa = PBXGroup;
-			children = (
-				1562E7781AF034D600BF7BF3 /* iParleTests.swift */,
-				1562E7761AF034D600BF7BF3 /* Supporting Files */,
-			);
-			path = iParleTests;
-			sourceTree = "<group>";
-		};
-		1562E7761AF034D600BF7BF3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1562E7771AF034D600BF7BF3 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -135,24 +86,6 @@
 			productReference = 1562E75A1AF034D600BF7BF3 /* iParle.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1562E7711AF034D600BF7BF3 /* iParleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1562E77F1AF034D600BF7BF3 /* Build configuration list for PBXNativeTarget "iParleTests" */;
-			buildPhases = (
-				1562E76E1AF034D600BF7BF3 /* Sources */,
-				1562E76F1AF034D600BF7BF3 /* Frameworks */,
-				1562E7701AF034D600BF7BF3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1562E7741AF034D600BF7BF3 /* PBXTargetDependency */,
-			);
-			name = iParleTests;
-			productName = iParleTests;
-			productReference = 1562E7721AF034D600BF7BF3 /* iParleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -164,10 +97,6 @@
 				TargetAttributes = {
 					1562E7591AF034D600BF7BF3 = {
 						CreatedOnToolsVersion = 6.3.1;
-					};
-					1562E7711AF034D600BF7BF3 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 1562E7591AF034D600BF7BF3;
 					};
 				};
 			};
@@ -185,7 +114,6 @@
 			projectRoot = "";
 			targets = (
 				1562E7591AF034D600BF7BF3 /* iParle */,
-				1562E7711AF034D600BF7BF3 /* iParleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -195,16 +123,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1562E7681AF034D600BF7BF3 /* Main.storyboard in Resources */,
 				1562E76D1AF034D600BF7BF3 /* LaunchScreen.xib in Resources */,
 				1562E76A1AF034D600BF7BF3 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1562E7701AF034D600BF7BF3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,39 +135,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1562E7651AF034D600BF7BF3 /* ViewController.swift in Sources */,
 				1562E7631AF034D600BF7BF3 /* iParle.xcdatamodeld in Sources */,
-				1562E7601AF034D600BF7BF3 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1562E76E1AF034D600BF7BF3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1562E7791AF034D600BF7BF3 /* iParleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		1562E7741AF034D600BF7BF3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1562E7591AF034D600BF7BF3 /* iParle */;
-			targetProxy = 1562E7731AF034D600BF7BF3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		1562E7661AF034D600BF7BF3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1562E7671AF034D600BF7BF3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1562E76B1AF034D600BF7BF3 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -362,40 +256,6 @@
 			};
 			name = Release;
 		};
-		1562E7801AF034D600BF7BF3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = iParleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iParle.app/iParle";
-			};
-			name = Debug;
-		};
-		1562E7811AF034D600BF7BF3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = iParleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iParle.app/iParle";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -413,14 +273,6 @@
 			buildConfigurations = (
 				1562E77D1AF034D600BF7BF3 /* Debug */,
 				1562E77E1AF034D600BF7BF3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		1562E77F1AF034D600BF7BF3 /* Build configuration list for PBXNativeTarget "iParleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1562E7801AF034D600BF7BF3 /* Debug */,
-				1562E7811AF034D600BF7BF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
