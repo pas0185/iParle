@@ -7,7 +7,7 @@
 //
 
 
-#import "ProCom-Bridging-Header.h"
+#import "iParle-Bridging-Header.h"
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 

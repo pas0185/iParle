@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ParseUI
+//import ParseUI
 
 class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate  {
     
