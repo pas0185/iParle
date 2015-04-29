@@ -54,9 +54,16 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
     func logInViewController(logInController: PFLogInViewController!, didLogInUser user: PFUser!) {
         println("logInViewController did log in user, dismiss this VC")
         
-        if !PFFacebookUtils.session()!.isOpen {
-            println("PFFacebookUtils.session().isOpen: false")
-            PFFacebookUtils.session()!.handleDidBecomeActive()
+        if let fbSession = PFFacebookUtils.session() {
+
+            println("PFFacebookUtils.session() exists")
+
+            if !fbSession.isOpen {
+                
+                println("PFFacebookUtils.session() is closed. Calling handleDidBecomeActive")
+                fbSession.handleDidBecomeActive()
+            }
+            
         }
         
         var request = FBRequest.requestForMe()
