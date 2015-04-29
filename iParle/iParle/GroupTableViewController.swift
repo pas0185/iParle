@@ -60,6 +60,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         
         //Changing the look of the view
         self.view.backgroundColor = UIColor.blackColor()
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     func fetchConvos() {
@@ -377,12 +378,14 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         let cell = UITableViewCell()
         
         cell.backgroundColor = UIColor.blackColor()
+        cell.selectionStyle = UITableViewCellSelectionStyle.Gray
         
         if indexPath.section == GROUP_TABLE_VIEW_SECTION {
             
             if let name = self.mgdGroups[indexPath.row].name {
                 cell.textLabel?.text = name
                 cell.textLabel?.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
+                cell.textLabel?.textAlignment = NSTextAlignment.Center
             }
             
 //            if let name = self.groupArray[indexPath.row].objectForKey(NAME_KEY) as? String {
@@ -395,6 +398,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             if let name = self.mgdConvos[indexPath.row].name {
                 cell.textLabel?.text = name
                 cell.textLabel?.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
+                cell.textLabel?.textAlignment = NSTextAlignment.Center
             }
             
 //            if let name = self.convoArray[indexPath.row].objectForKey(NAME_KEY) as? String {
