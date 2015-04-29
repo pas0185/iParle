@@ -6,7 +6,7 @@ target 'iParle' do
 pod 'Facebook-iOS-SDK'
 pod 'Parse', '1.7.1'
 pod 'ParseUI'
-pod 'JSQMessagesViewController', '7.0.1'
+pod 'JSQMessagesViewController', '7.0'
 pod 'ParseFacebookUtils', '1.7.1'
 pod 'FBSDKCoreKit', '~> 4.0'
 pod 'FBSDKLoginKit', '~> 4.0'

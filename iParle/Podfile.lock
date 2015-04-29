@@ -20,7 +20,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.0.1):
     - FBSDKCoreKit
-  - JSQMessagesViewController (7.0.1):
+  - JSQMessagesViewController (7.0.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - Parse (1.7.1):
@@ -36,7 +36,7 @@ DEPENDENCIES:
   - FBSDKCoreKit (~> 4.0)
   - FBSDKLoginKit (~> 4.0)
   - FBSDKShareKit (~> 4.0)
-  - JSQMessagesViewController (= 7.0.1)
+  - JSQMessagesViewController (= 7.0)
   - Parse (= 1.7.1)
   - ParseFacebookUtils (= 1.7.1)
   - ParseUI
@@ -47,7 +47,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: a69aaad8712c1de6b370c70ddd9db02eb1dcb16c
   FBSDKLoginKit: f0be76ce9e06d52f29051e38c7318d8b28030a05
   FBSDKShareKit: 349d59da6a4d37e29d20030299089cfb0ac32a28
-  JSQMessagesViewController: 03fba8a3021a3ddc1c91847f180ffe549f2e8cf2
+  JSQMessagesViewController: 9fd7e9ac96e9fc91f2deca86928e2cc916aeebaa
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Parse: fa8ec29de6d82035635986c11946299fb1b38316
   ParseFacebookUtils: fa09adf78372b589163b5a71a34d6ebc7eb83395
