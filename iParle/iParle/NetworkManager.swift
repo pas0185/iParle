@@ -17,24 +17,14 @@ class NetworkManager: NSObject {
     }
     
     //MARK: - Convos
-    func fetchNewConvos(forGroup group: ManagedGroup?, existingConvos: [ManagedConvo], user: PFUser, completion: (newConvos: [Convo]) -> Void) {
+    func fetchNewConvos(forGroup group: ManagedGroup?, existingConvoIds: [String], user: PFUser, completion: (newConvos: [Convo]) -> Void) {
         
         var convos = [Convo]()
         
-        // Build Convo Query...
+        // Build Convo Query
         let convoQuery = Convo.query()
-        
-        // For all that the user belongs to...
         convoQuery!.whereKey(USERS_KEY, equalTo: user)
-        
-        // ...That we don't have yet
-        var existingConvoIds: [String] = []
-        for convo in existingConvos {
-            existingConvoIds.append(convo.pfId)
-        }
-        println("Existing Convo IDs being excluded from query: \(existingConvoIds)")
         convoQuery!.whereKey(OBJECT_ID_KEY, notContainedIn: existingConvoIds)
-        
         
         if let groupId = group?.pfId {
             println("Convo predicate from Network: parent group ID = \(groupId)")

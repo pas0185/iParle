@@ -72,8 +72,18 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             self.mgdConvos = convos
             self.tableView.reloadData()
             
+            
+            // Build array of existing Convo Ids
+            var existingConvoIds = [String]()
+            if self.mgdConvos.count > 0 {
+                println("mgdConvos.count is >0. Adding existing IDs")
+                for convo in self.mgdConvos {
+                    existingConvoIds.append(convo.pfId)
+                }
+            }
+            
             // Look for new convos on the network (in the background)
-            NetworkManager.sharedInstance.fetchNewConvos(forGroup: self.group, existingConvos: convos, user: PFUser.currentUser()!, completion: {
+            NetworkManager.sharedInstance.fetchNewConvos(forGroup: self.group, existingConvoIds: existingConvoIds, user: PFUser.currentUser()!, completion: {
                 (convos: [Convo]) in
                 
                 // Received new convos from the network
@@ -113,11 +123,10 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             if let g = self.group {
                 groupId = g.pfId
             }
-//            let groupId: String = self.group!.pfId
-
             
+            
+            // Build array of existing Group Ids
             var existingGroupIds = [String]()
-            
             if self.mgdGroups.count > 0 {
                 println("mgdGroups.count is >0. Adding existing IDs")
                 for group in self.mgdGroups {

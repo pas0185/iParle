@@ -32,7 +32,9 @@ class CoreDataManager: NSObject {
             var error: NSError?
             
             // Send fetch request
-            convos = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [ManagedConvo]
+            if let coreConvos = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [ManagedConvo] {
+                convos = coreConvos
+            }
             
             if error != nil {
                 println(error!.localizedDescription)
@@ -41,8 +43,6 @@ class CoreDataManager: NSObject {
         else {
             println("CoreDataManager could not fetch any Convos for the given group:\(group)")
         }
-        
-        
         
         // Notify the fetch is finished to the completion block
         completion(convos: convos)
@@ -73,7 +73,6 @@ class CoreDataManager: NSObject {
             }
         }
         
-        
         completion(newMgdConvos: mgdConvos)
     }
     
@@ -93,35 +92,18 @@ class CoreDataManager: NSObject {
             // Was provided a valid group, get all Groups that have it as their parent
             
             parentGroupId = groupId
-            
-//            println("Group predicate from core: parent group ID = \(groupId)")
-//            fetchRequest.predicate = NSPredicate(format: "parentGroupId == %@", groupId)
         }
-//        else {
-//            // Was not provided a valid group, get 'home' group
-//            println("Group predicate from core: parent groupID = \(parentGroupId)")
-//            fetchRequest.predicate  = NSPredicate(format: "parentGroupId == 0")
-//            
-//        }
         
         
         println("Predicate for fetching Groups from core: using parentGroupId = \(parentGroupId)")
         fetchRequest.predicate = NSPredicate(format: "parentGroupId == %@", parentGroupId)
         
-        
-        
-        
-        
         var error: NSError?
         
         // Send fetch request
-        if let coreGroups = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error){// as? [ManagedGroup] {
-            println("coreGroups succeeded")
-            println("foo")
-//            groups = coreGroups
+        if let coreGroups = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [ManagedGroup] {
+            groups = coreGroups
         }
-        
-//        groups = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [ManagedGroup]
         
         if error != nil {
             println(error!.localizedDescription)
@@ -150,13 +132,7 @@ class CoreDataManager: NSObject {
             }
             
             var error: NSError?
-//            self.managedObjectContext!.save(&error)
-            
-            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.saveContext()
-            
-            
-            
+            self.managedObjectContext!.save(&error)
             
             if error != nil {
                 println("Error saving Group to Core Data: \(error?.localizedDescription)")
@@ -179,7 +155,9 @@ class CoreDataManager: NSObject {
         
         // Send fetch request
         var error: NSError?
-        blurbs = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [ManagedBlurb]
+        if let coreBlurbs = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [ManagedBlurb] {
+            blurbs = coreBlurbs
+        }
         
         if error != nil {
             println(error!.localizedDescription)
