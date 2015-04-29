@@ -37,14 +37,15 @@ class CoreDataManager: NSObject {
             if error != nil {
                 println(error!.localizedDescription)
             }
-            
-            // Notify the fetch is finished to the completion block
-            completion(convos: convos)
-
         }
         else {
             println("CoreDataManager could not fetch any Convos for the given group:\(group)")
         }
+        
+        
+        
+        // Notify the fetch is finished to the completion block
+        completion(convos: convos)
     }
     
     func saveNewConvos(convos: [Convo], completion: (newMgdConvos: [ManagedConvo]) -> Void) {
@@ -76,7 +77,9 @@ class CoreDataManager: NSObject {
         completion(newMgdConvos: mgdConvos)
     }
     
-    //MARK: - Groups
+    // MARK: -
+    // MARK: - Groups
+    
     func fetchGroups(forGroup group: ManagedGroup?, completion: (groups: [ManagedGroup]) -> Void) {
         // Return children Groups of the parameter Group
         //      if received nil group; fetch the 'home' one with an ID of 0
@@ -84,26 +87,50 @@ class CoreDataManager: NSObject {
         var groups = [ManagedGroup]()
         
         var fetchRequest = NSFetchRequest(entityName: "Group")
+        var parentGroupId: String = "0"
+        
         if let groupId = group?.pfId {
             // Was provided a valid group, get all Groups that have it as their parent
-            println("Group predicate from core: parent group ID = \(groupId)")
-            fetchRequest.predicate = NSPredicate(format: "parentGroupId == %@", groupId)
+            
+            parentGroupId = groupId
+            
+//            println("Group predicate from core: parent group ID = \(groupId)")
+//            fetchRequest.predicate = NSPredicate(format: "parentGroupId == %@", groupId)
         }
-        else {
-            // Was not provided a valid group, get 'home' group
-            fetchRequest.predicate  = NSPredicate(format: "parentGroupId == 0")
-        }
+//        else {
+//            // Was not provided a valid group, get 'home' group
+//            println("Group predicate from core: parent groupID = \(parentGroupId)")
+//            fetchRequest.predicate  = NSPredicate(format: "parentGroupId == 0")
+//            
+//        }
+        
+        
+        println("Predicate for fetching Groups from core: using parentGroupId = \(parentGroupId)")
+        fetchRequest.predicate = NSPredicate(format: "parentGroupId == %@", parentGroupId)
+        
+        
+        
+        
+        
         var error: NSError?
         
         // Send fetch request
-        groups = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [ManagedGroup]
+        if let coreGroups = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error){// as? [ManagedGroup] {
+            println("coreGroups succeeded")
+            println("foo")
+//            groups = coreGroups
+        }
+        
+//        groups = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as! [ManagedGroup]
         
         if error != nil {
             println(error!.localizedDescription)
         }
-        
+    
+    
         // Notify the fetch is finished to the completion block
         completion(groups: groups)
+    
     }
     
     func saveNewGroups(groups: [Group], completion: (newMgdGroups: [ManagedGroup]) -> Void) {
@@ -123,7 +150,13 @@ class CoreDataManager: NSObject {
             }
             
             var error: NSError?
-            self.managedObjectContext?.save(&error)
+//            self.managedObjectContext!.save(&error)
+            
+            var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.saveContext()
+            
+            
+            
             
             if error != nil {
                 println("Error saving Group to Core Data: \(error?.localizedDescription)")

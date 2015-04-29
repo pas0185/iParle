@@ -115,13 +115,17 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             }
 //            let groupId: String = self.group!.pfId
 
+            
             var existingGroupIds = [String]()
-            for group in self.mgdGroups {
-                existingGroupIds.append(group.pfId)
+            
+            if self.mgdGroups.count > 0 {
+                println("mgdGroups.count is >0. Adding existing IDs")
+                for group in self.mgdGroups {
+                    existingGroupIds.append(group.pfId)
+                }
             }
             
-            
-            println("Going to fetch new Groups from Network under groupId=\(groupId) and existing groupIds=\(existingGroupIds)\n")
+            println("Going to fetch new Groups from Network under groupId=\(groupId), ignoring existing groupIds=\(existingGroupIds)\n")
             NetworkManager.sharedInstance.fetchNewGroups(groupId, existingGroupIds: existingGroupIds, completion: {
                 (groups: [Group]) in
                 
@@ -132,7 +136,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
                 CoreDataManager.sharedInstance.saveNewGroups(groups, completion: {
                     (newMgdGroups: [ManagedGroup]) -> Void in
                     
-                    println("Saved new groups in Core Data")
+                    println("Saved \(newMgdGroups.count) new groups in Core Data")
                     // Add new *converted* Groups to the TableView Data Source
                     self.mgdGroups.extend(newMgdGroups)
                     self.tableView.reloadData()
