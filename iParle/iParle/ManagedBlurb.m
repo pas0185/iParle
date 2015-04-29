@@ -45,8 +45,7 @@
     PFQuery* query = [PFUser query];
     [query whereKey:@"objectId" equalTo:self.userId];
 
-    // FIXME later
-    // This asynchronous call is BAD vv
+    //TODO: FIX QUERY EVERYTIME
     NSArray* results = [query findObjects];
     // ^^ Queries network for every single blurb e'rytime, but it works for now
     

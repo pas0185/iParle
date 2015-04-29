@@ -13,13 +13,11 @@
 		1562E7961AF0355500BF7BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7821AF0355500BF7BF3 /* AppDelegate.swift */; };
 		1562E7971AF0355500BF7BF3 /* Blurb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7831AF0355500BF7BF3 /* Blurb.swift */; };
 		1562E7981AF0355500BF7BF3 /* BlurbTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7841AF0355500BF7BF3 /* BlurbTableViewController.swift */; };
-		1562E7991AF0355500BF7BF3 /* BlurbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7851AF0355500BF7BF3 /* BlurbViewController.swift */; };
 		1562E79A1AF0355500BF7BF3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7861AF0355500BF7BF3 /* Constants.swift */; };
 		1562E79B1AF0355500BF7BF3 /* Convo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7871AF0355500BF7BF3 /* Convo.swift */; };
 		1562E79C1AF0355500BF7BF3 /* ConvoSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7881AF0355500BF7BF3 /* ConvoSettingsViewController.swift */; };
 		1562E79E1AF0355500BF7BF3 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E78A1AF0355500BF7BF3 /* CoreDataManager.swift */; };
 		1562E79F1AF0355500BF7BF3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E78B1AF0355500BF7BF3 /* Group.swift */; };
-		1562E7A01AF0355500BF7BF3 /* GroupDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E78C1AF0355500BF7BF3 /* GroupDataController.swift */; };
 		1562E7A11AF0355500BF7BF3 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1562E78D1AF0355500BF7BF3 /* GroupTableViewController.swift */; };
 		1562E7A21AF0355500BF7BF3 /* ManagedBlurb.m in Sources */ = {isa = PBXBuildFile; fileRef = 1562E78F1AF0355500BF7BF3 /* ManagedBlurb.m */; };
 		1562E7A31AF0355500BF7BF3 /* ManagedConvo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1562E7911AF0355500BF7BF3 /* ManagedConvo.m */; };
@@ -54,13 +52,11 @@
 		1562E7821AF0355500BF7BF3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1562E7831AF0355500BF7BF3 /* Blurb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blurb.swift; sourceTree = "<group>"; };
 		1562E7841AF0355500BF7BF3 /* BlurbTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurbTableViewController.swift; sourceTree = "<group>"; };
-		1562E7851AF0355500BF7BF3 /* BlurbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurbViewController.swift; sourceTree = "<group>"; };
 		1562E7861AF0355500BF7BF3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1562E7871AF0355500BF7BF3 /* Convo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convo.swift; sourceTree = "<group>"; };
 		1562E7881AF0355500BF7BF3 /* ConvoSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvoSettingsViewController.swift; sourceTree = "<group>"; };
 		1562E78A1AF0355500BF7BF3 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1562E78B1AF0355500BF7BF3 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		1562E78C1AF0355500BF7BF3 /* GroupDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDataController.swift; sourceTree = "<group>"; };
 		1562E78D1AF0355500BF7BF3 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		1562E78E1AF0355500BF7BF3 /* ManagedBlurb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedBlurb.h; sourceTree = "<group>"; };
 		1562E78F1AF0355500BF7BF3 /* ManagedBlurb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedBlurb.m; sourceTree = "<group>"; };
@@ -171,7 +167,6 @@
 				1562E78F1AF0355500BF7BF3 /* ManagedBlurb.m */,
 				1562E7831AF0355500BF7BF3 /* Blurb.swift */,
 				1562E7841AF0355500BF7BF3 /* BlurbTableViewController.swift */,
-				1562E7851AF0355500BF7BF3 /* BlurbViewController.swift */,
 			);
 			name = "Blurbs (Messages)";
 			sourceTree = "<group>";
@@ -191,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				1562E78B1AF0355500BF7BF3 /* Group.swift */,
-				1562E78C1AF0355500BF7BF3 /* GroupDataController.swift */,
 				1562E78D1AF0355500BF7BF3 /* GroupTableViewController.swift */,
 				1562E7921AF0355500BF7BF3 /* ManagedGroup.h */,
 				1562E7931AF0355500BF7BF3 /* ManagedGroup.m */,
@@ -352,7 +346,6 @@
 				1562E7A41AF0355500BF7BF3 /* ManagedGroup.m in Sources */,
 				1562E7631AF034D600BF7BF3 /* iParle.xcdatamodeld in Sources */,
 				1562E79C1AF0355500BF7BF3 /* ConvoSettingsViewController.swift in Sources */,
-				1562E7991AF0355500BF7BF3 /* BlurbViewController.swift in Sources */,
 				1562E79B1AF0355500BF7BF3 /* Convo.swift in Sources */,
 				1562E7981AF0355500BF7BF3 /* BlurbTableViewController.swift in Sources */,
 				1562E7A51AF0355500BF7BF3 /* NetworkManager.swift in Sources */,
@@ -361,7 +354,6 @@
 				1562E79A1AF0355500BF7BF3 /* Constants.swift in Sources */,
 				1562E7A21AF0355500BF7BF3 /* ManagedBlurb.m in Sources */,
 				1562E7A11AF0355500BF7BF3 /* GroupTableViewController.swift in Sources */,
-				1562E7A01AF0355500BF7BF3 /* GroupDataController.swift in Sources */,
 				1562E7A61AF0355500BF7BF3 /* UserAccessViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
