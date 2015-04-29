@@ -55,7 +55,7 @@ class BlurbTableViewController: JSQMessagesViewController {
         self.collectionView.addSubview(refreshControl)
         
         //Added a settings button to navbar
-        var settingsImage = UIImage(named: "settingsicon.png")
+        var settingsImage = UIImage(named: "Settings-25.png")
         var settingButton: UIBarButtonItem = UIBarButtonItem(image: settingsImage, style: .Plain, target: self, action: "settingsButtonClicked")
         self.navigationItem.rightBarButtonItem = settingButton
         
@@ -75,6 +75,7 @@ class BlurbTableViewController: JSQMessagesViewController {
     
     func refresh(sender:AnyObject)
     {
+        self.fetchBlurbs()
         self.collectionView.reloadData()
         self.refreshControl?.endRefreshing()
     }
@@ -233,6 +234,7 @@ class BlurbTableViewController: JSQMessagesViewController {
     func receivedMessagePressed(sender: UIBarButtonItem) {
         
         // Simulate reciving message
+        self.fetchBlurbs()
         showTypingIndicator = !showTypingIndicator
         scrollToBottomAnimated(true)
     }

@@ -42,6 +42,7 @@
 		8A40367273CF9216B08E5FD0 /* libPods-iParle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFB4A703D7F48D6D5A1C5F8 /* libPods-iParle.a */; };
 		CB2983991AF03FAE00B6D96B /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB2983981AF03FAE00B6D96B /* Keys.plist */; };
 		CB29839B1AF0424E00B6D96B /* AppIcon in Resources */ = {isa = PBXBuildFile; fileRef = CB29839A1AF0424E00B6D96B /* AppIcon */; };
+		CB29839E1AF1387F00B6D96B /* Settings-25.png in Resources */ = {isa = PBXBuildFile; fileRef = CB29839D1AF1387F00B6D96B /* Settings-25.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		7CFB4A703D7F48D6D5A1C5F8 /* libPods-iParle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iParle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2983981AF03FAE00B6D96B /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		CB29839A1AF0424E00B6D96B /* AppIcon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon; sourceTree = "<group>"; };
+		CB29839D1AF1387F00B6D96B /* Settings-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-25.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,9 +154,8 @@
 		1562E75D1AF034D600BF7BF3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CB29839A1AF0424E00B6D96B /* AppIcon */,
+				CB29839C1AF1386700B6D96B /* Images */,
 				1562E75E1AF034D600BF7BF3 /* Info.plist */,
-				1562E7691AF034D600BF7BF3 /* Images.xcassets */,
 				1562E7C21AF0388400BF7BF3 /* iParle-Bridging-Header.h */,
 				1562E7611AF034D600BF7BF3 /* iParle.xcdatamodeld */,
 				1562E76B1AF034D600BF7BF3 /* LaunchScreen.xib */,
@@ -228,6 +229,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB29839C1AF1386700B6D96B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CB29839D1AF1387F00B6D96B /* Settings-25.png */,
+				1562E7691AF034D600BF7BF3 /* Images.xcassets */,
+				CB29839A1AF0424E00B6D96B /* AppIcon */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,6 +302,7 @@
 				CB29839B1AF0424E00B6D96B /* AppIcon in Resources */,
 				1562E76D1AF034D600BF7BF3 /* LaunchScreen.xib in Resources */,
 				1562E76A1AF034D600BF7BF3 /* Images.xcassets in Resources */,
+				CB29839E1AF1387F00B6D96B /* Settings-25.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

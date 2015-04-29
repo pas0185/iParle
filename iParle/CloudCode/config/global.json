@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "iParle": {
+            "applicationId": "oHASTmer2PWxM3pDI2ZnzV6W5zyiw3IUWTbsrbLR", 
+            "masterKey": "okWxjYOZ1o6L54xzEoimhqACl57hrIpsUAUX7SL6"
+        }, 
+        "_default": {
+            "link": "iParle"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.5"
+    }
+}
