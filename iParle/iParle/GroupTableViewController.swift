@@ -57,6 +57,9 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         // Bar button for New Group
         var addButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addGroupButtonClicked")
         self.navigationItem.rightBarButtonItem = addButton
+        
+        //Changing the look of the view
+        self.view.backgroundColor = UIColor.blackColor()
     }
     
     func fetchConvos() {
@@ -373,10 +376,13 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
 
         let cell = UITableViewCell()
         
+        cell.backgroundColor = UIColor.blackColor()
+        
         if indexPath.section == GROUP_TABLE_VIEW_SECTION {
             
             if let name = self.mgdGroups[indexPath.row].name {
                 cell.textLabel?.text = name
+                cell.textLabel?.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
             }
             
 //            if let name = self.groupArray[indexPath.row].objectForKey(NAME_KEY) as? String {
@@ -388,6 +394,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             
             if let name = self.mgdConvos[indexPath.row].name {
                 cell.textLabel?.text = name
+                cell.textLabel?.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
             }
             
 //            if let name = self.convoArray[indexPath.row].objectForKey(NAME_KEY) as? String {
@@ -438,6 +445,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         if section == GROUP_TABLE_VIEW_SECTION && self.mgdGroups.count > 0 {
             var label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, TABLE_HEADER_HEIGHT))
             label.text = "Groups"
+            label.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
             label.textAlignment = NSTextAlignment.Center
             view.addSubview(label)
             
@@ -449,6 +457,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             
             var label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, TABLE_HEADER_HEIGHT))
             label.text = "Convos"
+            label.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
             label.textAlignment = NSTextAlignment.Center
             view.addSubview(label)
             

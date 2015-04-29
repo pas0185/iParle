@@ -27,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // View setup
+        UINavigationBar.appearance().tintColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
+        UINavigationBar.appearance().barStyle = UIBarStyle.Black
+        UINavigationBar.appearance().translucent = false
+        
         // Parse setup
         Group.registerSubclass()
         Convo.registerSubclass()

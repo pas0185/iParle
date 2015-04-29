@@ -18,13 +18,23 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
             let fbButton : FBSDKLoginButton = FBSDKLoginButton()
             // User is not signed in yet, display Log In View
             var logInViewController:PFLogInViewController = PFLogInViewController()
+            var signUpController:PFSignUpViewController = PFSignUpViewController()
+            
             logInViewController.fields = (PFLogInFields.Facebook | PFLogInFields.LogInButton | PFLogInFields.PasswordForgotten | PFLogInFields.UsernameAndPassword | PFLogInFields.SignUpButton)
             logInViewController.delegate = self
             
-            let image = UIImage(named: "mainlogo")
-            let imageView = UIImageView(image: image)
-            imageView.contentMode = UIViewContentMode.ScaleAspectFit
-            logInViewController.logInView!.logo = imageView
+            let loginImage = UIImage(named: "mainlogo")
+            let loginImageView = UIImageView(image: loginImage)
+            loginImageView.contentMode = UIViewContentMode.ScaleAspectFit
+            logInViewController.logInView!.logo = loginImageView
+            logInViewController.logInView?.backgroundColor = UIColor.blackColor()
+            
+            let signUpImage = UIImage(named: "mainlogo")
+            let signUpImageView = UIImageView(image: signUpImage)
+            signUpImageView.contentMode = UIViewContentMode.ScaleAspectFit
+            logInViewController.signUpController?.signUpView?.logo = signUpImageView
+            logInViewController.signUpController?.signUpView?.backgroundColor = UIColor.blackColor()
+            
     
             self.navigationController?.presentViewController(logInViewController, animated:true, completion: nil)
         }
@@ -40,9 +50,7 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Facebook Setup
-    
-    
+
     
     // MARK: - PFLogInViewControllerDelegate
     func logInViewController(logInController: PFLogInViewController!, shouldBeginLogInWithUsername username: String!, password: String!) -> Bool {
