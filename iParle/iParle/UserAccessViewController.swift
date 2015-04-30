@@ -53,13 +53,13 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
 
     
     // MARK: - PFLogInViewControllerDelegate
-    func logInViewController(logInController: PFLogInViewController!, shouldBeginLogInWithUsername username: String!, password: String!) -> Bool {
+    func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
         
         println("Should begin login with username, password. Will return true")
         return true
     }
     
-    func logInViewController(logInController: PFLogInViewController!, didLogInUser user: PFUser!) {
+    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         println("logInViewController did log in user, dismiss this VC")
         
         if let fbSession = PFFacebookUtils.session() {
@@ -108,18 +108,18 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
         self.navigationController?.setViewControllers([gtView], animated: true)
     }
     
-    func logInViewController(logInController: PFLogInViewController!, didFailToLogInWithError error: NSError!) {
+    func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
         
-        println("Failed to log in user: \(error.localizedDescription)")
+        println("Failed to log in user: \(error!.localizedDescription)")
     }
     
     // MARK: - PFSignUpViewControllerDelegate
-    func signUpViewController(signUpController: PFSignUpViewController!, shouldBeginSignUp info: [NSObject : AnyObject]!) -> Bool {
+    func signUpViewController(signUpController: PFSignUpViewController, shouldBeginSignUp info: [NSObject : AnyObject]) -> Bool {
         println("Should beging signup")
         return true
     }
     
-    func signUpViewController(signUpController: PFSignUpViewController!, didSignUpUser user: PFUser!) {
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
         
         println("Did sign up user")
         
@@ -133,8 +133,8 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
         self.navigationController?.setViewControllers([gtView], animated: true)
     }
     
-    func signUpViewController(signUpController: PFSignUpViewController!, didFailToSignUpWithError error: NSError!) {
-        println("Failed to sign up user \(error.localizedDescription)")
+    func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
+        println("Failed to sign up user \(error!.localizedDescription)")
     }
     
     
