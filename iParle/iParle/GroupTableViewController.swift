@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
+class GroupTableViewController: UICollectionViewController, UIAlertViewDelegate {
 
     var group: ManagedGroup?
     
@@ -24,7 +24,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
     // MARK: - Initialization
     
     init(group: ManagedGroup?) {
-        super.init(style: UITableViewStyle.Grouped)
+        super.init(style: UICollectionView.appearance().center) //UITableViewStyle.Grouped)
 
         self.group = group
     }
@@ -60,7 +60,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         
         //Changing the look of the view
         self.view.backgroundColor = UIColor.blackColor()
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+//        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     func fetchConvos() {
@@ -74,7 +74,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             
             // Assign these convos and reload TableView
             self.mgdConvos = convos
-            self.tableView.reloadData()
+            self.collectionView?.reloadData()
             
             
             // Build array of existing Convo Ids
@@ -101,7 +101,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
                     
                     // Add new *converted* Convos to the TableView Data Source
                     self.mgdConvos.extend(newMgdConvos)
-                    self.tableView.reloadData()
+                    self.collectionView?.reloadData()
                 })
                 
                 self.convoActivityIndicator.stopAnimating()
@@ -119,7 +119,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             
             // Assign these groups and reload TableView
             self.mgdGroups = groups
-            self.tableView.reloadData()
+            self.collectionView?.reloadData()
             
             // Look for new Groups on the network (in the background)
 
@@ -152,7 +152,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
                     println("Saved \(newMgdGroups.count) new groups in Core Data")
                     // Add new *converted* Groups to the TableView Data Source
                     self.mgdGroups.extend(newMgdGroups)
-                    self.tableView.reloadData()
+                    self.collectionView?.reloadData()
                 })
                 
                 self.groupActivityIndicator.stopAnimating()
@@ -280,7 +280,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
                         
                         // Add the newly created Group to this view's list
                         self.mgdGroups.extend(newMgdGroups)
-                        self.tableView.reloadData()
+                        self.collectionView?.reloadData()
                     })
                 })
             }
@@ -324,7 +324,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
                             
                             // Add the newly created Group to this view's list
                             self.mgdConvos.extend(newMgdConvos)
-                            self.tableView.reloadData()
+                            self.collectionView?.reloadData()
                         })
                     })
             }
@@ -348,51 +348,49 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         
     }
     
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // Return the number of sections.
+    // MARK: - Collection view data source
+    
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 2
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         
         if section == GROUP_TABLE_VIEW_SECTION {
             
             return self.mgdGroups.count
-//            return self.groupArray.count
+            //            return self.groupArray.count
         }
-
+        
         if section == CONVO_TABLE_VIEW_SECTION {
             
             return self.mgdConvos.count
-//            return self.convoArray.count
+            //            return self.convoArray.count
         }
         
         return 0
     }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-        let cell = UITableViewCell()
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = UICollectionViewCell()
         
         cell.backgroundColor = UIColor.blackColor()
-        cell.selectionStyle = UITableViewCellSelectionStyle.Gray
         
         if indexPath.section == GROUP_TABLE_VIEW_SECTION {
             
             if let name = self.mgdGroups[indexPath.row].name {
+                cell
                 cell.textLabel?.text = name
                 cell.textLabel?.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
                 cell.textLabel?.textAlignment = NSTextAlignment.Center
             }
             
-//            if let name = self.groupArray[indexPath.row].objectForKey(NAME_KEY) as? String {
-//                cell.textLabel?.text = name
-//            }
+            //            if let name = self.groupArray[indexPath.row].objectForKey(NAME_KEY) as? String {
+            //                cell.textLabel?.text = name
+            //            }
         }
-        
+            
         else if indexPath.section == CONVO_TABLE_VIEW_SECTION {
             
             if let name = self.mgdConvos[indexPath.row].name {
@@ -401,13 +399,15 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
                 cell.textLabel?.textAlignment = NSTextAlignment.Center
             }
             
-//            if let name = self.convoArray[indexPath.row].objectForKey(NAME_KEY) as? String {
-//                cell.textLabel?.text = name
-//            }
+            //            if let name = self.convoArray[indexPath.row].objectForKey(NAME_KEY) as? String {
+            //                cell.textLabel?.text = name
+            //            }
         }
         
         return cell
+
     }
+    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
