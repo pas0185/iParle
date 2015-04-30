@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Blurb" syncable="YES">
+    <entity name="Blurb" representedClassName="ManagedBlurb" syncable="YES">
         <attribute name="convoId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="pfId" optional="YES" attributeType="String" syncable="YES"/>
@@ -8,12 +8,12 @@
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Convo" syncable="YES">
+    <entity name="Convo" representedClassName="ManagedConvo" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parentGroupId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pfId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Group" syncable="YES">
+    <entity name="Group" representedClassName="ManagedGroup" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parentGroupId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pfId" optional="YES" attributeType="String" syncable="YES"/>
