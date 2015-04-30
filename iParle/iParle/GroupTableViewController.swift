@@ -110,6 +110,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
     }
     
     func fetchGroups() {
+        
         // Groups from Core Data
         self.groupActivityIndicator.startAnimating()
         CoreDataManager.sharedInstance.fetchGroups(forGroup: self.group) {
@@ -159,59 +160,6 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             })
         }
     }
-    
-//    func fetchConvosFromNetworkAndSaveToCoreData(user: PFUser, existingConvos: [NSManagedObject]) {
-//        // Get all unfetched convos from the Network and save them to Core Data
-//        
-//        let convoQuery = Convo.query()
-//        convoQuery!.whereKey(USERS_KEY, equalTo: user)
-//        
-//        // Don't fetch Convos we already have
-//        var existingConvoIds: [String] = []
-//        for convo in existingConvos as! [ManagedConvo] {
-//            existingConvoIds.append(convo.pfId)
-//        }
-//        convoQuery!.whereKey(OBJECT_ID_KEY, notContainedIn: existingConvoIds)
-//        
-//        convoQuery!.includeKey(GROUP_KEY)
-//        
-//        convoQuery!.findObjectsInBackgroundWithBlock ({
-//            (objects, error) -> Void in
-//            
-//            if (error == nil) {
-//                println("Fetched \(objects!.count) convos from Network")
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    
-//                    PFObject.pinAll(objects)
-//
-//                    let currentInstallation = PFInstallation.currentInstallation()
-//                    
-//                    var convos = objects as! [Convo]
-//                    
-//                    for convo in convos {
-//                        convo.saveToCore()
-//
-//                        if let parentGroup = convo.objectForKey("groupId") as? Group {
-//                            
-//                            parentGroup.saveToCore()
-//                        }
-//
-//                        if let channelName = convo.getChannelName() {
-//                            println("Subscribing to convo channel: \(channelName)")
-//                            currentInstallation.addUniqueObject(channelName, forKey: "channels")
-//                        }
-//                    }
-//                    currentInstallation.saveInBackgroundWithBlock(nil)
-//                    
-//                    var coreConvos = Convo.convosFromNSManagedObjects(existingConvos)
-//                    convos.extend(coreConvos)
-//                    
-//                    // Now go fetch the groups for the new convos
-////                    self.fetchGroups(convos)
-//                }
-//            }
-//        })
-//    }
     
     // MARK: - Push Data
     
@@ -361,16 +309,19 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         if section == GROUP_TABLE_VIEW_SECTION {
             
             return self.mgdGroups.count
-//            return self.groupArray.count
         }
 
         if section == CONVO_TABLE_VIEW_SECTION {
             
             return self.mgdConvos.count
-//            return self.convoArray.count
         }
         
         return 0
+    }
+    
+    func isHomeGroup(group: ManagedGroup) -> Bool {
+        
+        return (group.name == "home" && group.parentGroupId == "0")
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -382,15 +333,23 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         
         if indexPath.section == GROUP_TABLE_VIEW_SECTION {
             
-            if let name = self.mgdGroups[indexPath.row].name {
-                cell.textLabel?.text = name
+            if let groupAtRow = self.mgdGroups[indexPath.row] as ManagedGroup? {
+                
+                cell.textLabel?.text = groupAtRow.name
                 cell.textLabel?.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
+                cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
                 cell.textLabel?.textAlignment = NSTextAlignment.Center
+                
+                
+                // If at the root screen (containng only 'Home' group),
+                // set the NavController's root view to be the group view with Home (displaying it's children)
+                if self.isHomeGroup(groupAtRow) {
+                    
+                    var groupView = GroupTableViewController(group: groupAtRow)
+                    self.navigationController!.pushViewController(groupView, animated: false)
+                }
+                
             }
-            
-//            if let name = self.groupArray[indexPath.row].objectForKey(NAME_KEY) as? String {
-//                cell.textLabel?.text = name
-//            }
         }
         
         else if indexPath.section == CONVO_TABLE_VIEW_SECTION {
@@ -398,12 +357,9 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             if let name = self.mgdConvos[indexPath.row].name {
                 cell.textLabel?.text = name
                 cell.textLabel?.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
+                cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
                 cell.textLabel?.textAlignment = NSTextAlignment.Center
             }
-            
-//            if let name = self.convoArray[indexPath.row].objectForKey(NAME_KEY) as? String {
-//                cell.textLabel?.text = name
-//            }
         }
         
         return cell
@@ -449,6 +405,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         if section == GROUP_TABLE_VIEW_SECTION && self.mgdGroups.count > 0 {
             var label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, TABLE_HEADER_HEIGHT))
             label.text = "Groups"
+            label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
             label.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
             label.textAlignment = NSTextAlignment.Center
             view.addSubview(label)
@@ -461,6 +418,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             
             var label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, TABLE_HEADER_HEIGHT))
             label.text = "Convos"
+            label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
             label.textColor = UIColor(red: 165/255.0, green: 126/255.0, blue: 195/255.0, alpha: 1.0)
             label.textAlignment = NSTextAlignment.Center
             view.addSubview(label)
