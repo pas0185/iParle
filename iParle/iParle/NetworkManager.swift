@@ -81,6 +81,9 @@ class NetworkManager: NSObject {
                 groups = objects as! [Group]
                 completion(newGroups: groups)
             }
+            else {
+                println(error!.localizedDescription)
+            }
         })
     }
     
@@ -100,22 +103,16 @@ class NetworkManager: NSObject {
     
     //MARK: - Blurbs
     func fetchNewBlurbs(convoId: String, existingBlurbIds: [String], completion: (newBlurbs: [Blurb]) -> Void) {
-        
+                
         // Fetch new Blurbs from the Network
         
         var blurbs = [Blurb]()
 
-        // Build Parse PFQuery
+        // Build Parse query for Blurbs
         let blurbQuery = Blurb.query()
         blurbQuery!.includeKey("createdAt")
         blurbQuery!.whereKey("convoId", equalTo: convoId)
         blurbQuery!.whereKey("objectId", notContainedIn: existingBlurbIds)
-
-//        if let myDate = lastMessageTime{
-//            queryBlurb.whereKey("createdAt", greaterThan: myDate)
-//            println("Query for grabbing new objects was excecuted with this date: \(myDate)")
-//        }
-
         blurbQuery!.orderByAscending("createdAt")
 
         // Fetch all blurbs for this convo
@@ -127,6 +124,9 @@ class NetworkManager: NSObject {
 
                 blurbs = array as! [Blurb]
                 completion(newBlurbs: blurbs)
+            }
+            else {
+                println(error!.localizedDescription)
             }
         })
     }

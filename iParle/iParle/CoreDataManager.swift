@@ -33,6 +33,8 @@ class CoreDataManager: NSObject {
             
             // Send fetch request
             if let coreConvos = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [ManagedConvo] {
+                println("Fetched \(coreConvos.count) Convos from Core Data: \(coreConvos)")
+
                 convos = coreConvos
             }
             
@@ -67,7 +69,8 @@ class CoreDataManager: NSObject {
             
             var error: NSError?
             self.managedObjectContext?.save(&error)
-            
+            println("Successfully saved \(mgdConvos.count) Convos to core data: \(mgdConvos)\n")
+
             if error != nil {
                 println("Error saving Convos to Core Data: \(error?.localizedDescription)")
             }
@@ -95,13 +98,14 @@ class CoreDataManager: NSObject {
         }
         
         
-        println("Predicate for fetching Groups from core: using parentGroupId = \(parentGroupId)")
+        println("Fetching Groups from core with parentGroupId = \(parentGroupId)")
         fetchRequest.predicate = NSPredicate(format: "parentGroupId == %@", parentGroupId)
         
         var error: NSError?
         
         // Send fetch request
         if let coreGroups = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [ManagedGroup] {
+            println("Fetched \(coreGroups.count) Groups from Core Data: \(coreGroups)")
             groups = coreGroups
         }
         
@@ -133,6 +137,7 @@ class CoreDataManager: NSObject {
             
             var error: NSError?
             self.managedObjectContext!.save(&error)
+            println("Successfully saved \(mgdGroups.count) Groups to core data: \(mgdGroups)\n")
             
             if error != nil {
                 println("Error saving Group to Core Data: \(error?.localizedDescription)")
@@ -150,12 +155,14 @@ class CoreDataManager: NSObject {
         var blurbs = [ManagedBlurb]()
         
         var fetchRequest = NSFetchRequest(entityName: "Blurb")
-        println("Predicate for fetching Core Data Blurbs: convoID = \(convoId)")
+        println("Fetching Blurbs from Core Data under convoID: \(convoId)")
         fetchRequest.predicate = NSPredicate(format: "convoId == %@", convoId)
         
         // Send fetch request
         var error: NSError?
         if let coreBlurbs = managedObjectContext!.executeFetchRequest(fetchRequest, error: &error) as? [ManagedBlurb] {
+            println("Fetched \(coreBlurbs.count) Blurbs from Core Data: \(coreBlurbs)")
+
             blurbs = coreBlurbs
         }
         
@@ -189,7 +196,8 @@ class CoreDataManager: NSObject {
             
             var error: NSError?
             self.managedObjectContext?.save(&error)
-            
+            println("Successfully saved \(mgdBlurbs.count) Blurbs to core data: \(mgdBlurbs)\n")
+
             if error != nil {
                 println("Error saving Blurb to Core Data: \(error?.localizedDescription)")
             }
