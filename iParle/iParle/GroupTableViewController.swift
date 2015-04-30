@@ -261,6 +261,8 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
                     
                     newConvo["name"] = name
                     newConvo["parentGroupId"] = parentGroupId
+                    var relation = newConvo.relationForKey("users")
+                    relation.addObject(PFUser.currentUser()!)
                     
                     // Save it to the Network
                     NetworkManager.sharedInstance.saveNewConvo(newConvo, completion: {

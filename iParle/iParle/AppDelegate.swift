@@ -156,33 +156,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
-    func signInUser(username: String, password: String, synchronous: Bool) {
-        
-        // Synchronous
-        if synchronous {
-            var user = PFUser.logInWithUsername(username, password: password)
-            if (user != nil) {
-                println("Successfully logged in \(username)")
-            }
-            else {
-                println("Failed to log in \(username)")
-            }
-        }
-            
-        // Asynchronous
-        else {
-            PFUser.logInWithUsernameInBackground(username, password: password) {
-                (user, error) -> Void in
-                if (user != nil) {
-                    println("Successfully logged in \(username)")
-                }
-                else {
-                    println("Failed to log in \(username)")
-                }
-            }
-        }
-    }
-    
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         
         return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, withSession:PFFacebookUtils.session())
