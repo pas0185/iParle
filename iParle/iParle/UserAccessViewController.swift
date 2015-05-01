@@ -67,13 +67,14 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
                 var gtView = GroupTableViewController(group: mgdHomeGroup)
                 
                 // Create a GroupTVC with the Home group and display it
-                self.navigationController?.setViewControllers([gtView], animated: true)
+                self.navigationController!.setViewControllers([gtView], animated: false)
             }
             else {
                 // If that fails (first launch/installation?), then go check the Network
                 NetworkManager.sharedInstance.fetchNewGroups("0", existingGroupIds: [], completion: {
                     (newGroups) -> Void in
 
+                    
                     if let pfHomeGroup = newGroups.first as Group? {
                         
                         println("User Access found Home group from Parse/Network")
@@ -84,15 +85,21 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
                         CoreDataManager.sharedInstance.saveNewGroups([pfHomeGroup], completion: {
                             (newMgdGroups) -> Void in
                             
-                            if let mgdHomeGroup = groups.first as ManagedGroup? {
+                            if let mgdHomeGroup = newMgdGroups.first as ManagedGroup? {
                                 
-                                println("User Access saved the Network Home group in Core")
+                                println("User Access saved the Home group in Core")
                                 
                                 // Found a ManagedGroup; this is what we want
                                 var gtView = GroupTableViewController(group: mgdHomeGroup)
                                 
                                 // Create a GroupTVC with the Home group and display it
-                                self.navigationController?.setViewControllers([gtView], animated: true)
+                                self.navigationController!.setViewControllers([gtView], animated: false)
+                                
+//                                if let nc = self.navigationController {
+//                                    
+//                                    nc.pushViewController(gtView, animated: true)
+//                                    
+//                                }
                             }
                         })
                     }
