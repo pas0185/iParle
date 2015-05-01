@@ -17,22 +17,25 @@ class NetworkManager: NSObject {
     }
     
     //MARK: - Installation
-    func subscribeToConvoForNotifications(convo: Convo) {
+    func subscribeToConvosForNotifications(convos: [Convo]) {
         
-        if let channelName = convo.getChannelName() {
+        for convo in convos {
             
-            let currentInstallation = PFInstallation.currentInstallation()
-            
-            currentInstallation.addUniqueObject(channelName, forKey: "channels")
-            
-            currentInstallation.saveInBackgroundWithBlock {
-                (succeeded, error) -> Void in
+            if let channelName = convo.getChannelName() {
                 
-                if error == nil {
-                    println("Successfully subscribed this installation to a Convo channel")
-                }
-                else {
-                    println(error!.localizedDescription)
+                let currentInstallation = PFInstallation.currentInstallation()
+                
+                currentInstallation.addUniqueObject(channelName, forKey: "channels")
+                
+                currentInstallation.saveInBackgroundWithBlock {
+                    (succeeded, error) -> Void in
+                    
+                    if error == nil {
+                        println("Successfully subscribed this installation to a Convo channel")
+                    }
+                    else {
+                        println(error!.localizedDescription)
+                    }
                 }
             }
         }
@@ -60,6 +63,7 @@ class NetworkManager: NSObject {
                     println("Fetched \(objects!.count) convos from Network")
                     
                     convos = objects as! [Convo]
+                    self.subscribeToConvosForNotifications(convos)
                     completion(newConvos: convos)
                 }
             })
@@ -75,7 +79,7 @@ class NetworkManager: NSObject {
             (success, error) -> Void in
             if (success) {
                 println("Successfully saved new convo to Network: \(convo)")
-                self.subscribeToConvoForNotifications(convo)
+                self.subscribeToConvosForNotifications([convo])
                 completion(convo: convo)
             }
             else {
