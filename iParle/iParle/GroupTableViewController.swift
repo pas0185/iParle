@@ -61,6 +61,17 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         //Changing the look of the view
         self.view.backgroundColor = UIColor.blackColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        //First time opening the app?
+        let userDefaults = NSUserDefaults()
+        if userDefaults.boolForKey("HasLaunchedOnce"){
+            //Do nothing
+        }
+        else{
+            userDefaults.setBool(true, forKey: "HasLaunchedOnce")
+            userDefaults.synchronize()
+            self.showFirstTimeAlert()
+        }
     }
     
     func fetchConvos() {
@@ -431,4 +442,26 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
         
         return view
     }
+    
+    //MARK: User Friendly
+    
+    func showFirstTimeAlert(){
+        // Prompt user to create a new convo or new group
+        let alert = UIAlertController(title: "Start Something New", message: "Start by creating a new group!", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // Configure alert actions
+        var newGroupAction = UIAlertAction(title: "New Group", style: .Default, handler: {(alertAction:UIAlertAction!) in
+            self.promptGroupCreation()
+        })
+        
+        var cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+        
+        // Add actions to alert
+        alert.addAction(newGroupAction)
+        alert.addAction(cancelAction)
+        
+        // Display alert
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
 }
