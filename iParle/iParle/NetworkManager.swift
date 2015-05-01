@@ -16,6 +16,28 @@ class NetworkManager: NSObject {
         return _NetworkManagerInstance
     }
     
+    //MARK: - Installation
+    func subscribeToConvoForNotifications(convo: Convo) {
+        
+        if let channelName = convo.getChannelName() {
+            
+            let currentInstallation = PFInstallation.currentInstallation()
+            
+            currentInstallation.addUniqueObject(channelName, forKey: "channels")
+            
+            currentInstallation.saveInBackgroundWithBlock {
+                (succeeded, error) -> Void in
+                
+                if error == nil {
+                    println("Successfully subscribed this installation to a Convo channel")
+                }
+                else {
+                    println(error!.localizedDescription)
+                }
+            }
+        }
+    }
+    
     //MARK: - Convos
     func fetchNewConvos(forGroup group: ManagedGroup?, existingConvoIds: [String], user: PFUser, completion: (newConvos: [Convo]) -> Void) {
         
@@ -53,6 +75,7 @@ class NetworkManager: NSObject {
             (success, error) -> Void in
             if (success) {
                 println("Successfully saved new convo to Network: \(convo)")
+                self.subscribeToConvoForNotifications(convo)
                 completion(convo: convo)
             }
             else {
