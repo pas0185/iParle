@@ -19,16 +19,15 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
     var groupActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     var convoActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
     // MARK: - Initialization
     
     init(group: ManagedGroup?) {
+        
         super.init(style: UITableViewStyle.Grouped)
-
+        
         self.group = group
+
     }
-    
     override init(style: UITableViewStyle) {
         super.init(style: style)
     }
@@ -133,14 +132,6 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             self.mgdGroups = groups
             self.tableView.reloadData()
             
-            // Look for new Groups on the network (in the background)
-
-            var groupId: String = "0"
-            if let g = self.group {
-                groupId = g.pfId
-            }
-            
-            
             // Build array of existing Group Ids
             var existingGroupIds = [String]()
             if self.mgdGroups.count > 0 {
@@ -150,25 +141,25 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
                 }
             }
             
-            println("Going to fetch new Groups from Network under groupId=\(groupId), ignoring existing groupIds=\(existingGroupIds)\n")
-            NetworkManager.sharedInstance.fetchNewGroups(groupId, existingGroupIds: existingGroupIds, completion: {
-                (groups: [Group]) in
+            if let groupId = self.group!.pfId {
                 
-                // Received new convos from the network
-                println("GroupTableView received \(groups.count) new Groups from Network\nGoing to save in Core Data")
-                
-                // Save new Convos to Core Data
-                CoreDataManager.sharedInstance.saveNewGroups(groups, completion: {
-                    (newMgdGroups: [ManagedGroup]) -> Void in
+                // Network fetch for Convos
+                println("Going to fetch new Groups from Network under groupId=\(groupId), ignoring existing groupIds=\(existingGroupIds)\n")
+                NetworkManager.sharedInstance.fetchNewGroups(groupId, existingGroupIds: existingGroupIds, completion: {
+                    (groups: [Group]) in
                     
-                    println("Saved \(newMgdGroups.count) new groups in Core Data")
-                    // Add new *converted* Groups to the TableView Data Source
-                    self.mgdGroups.extend(newMgdGroups)
-                    self.tableView.reloadData()
+                    // Core Data save of new Convos
+                    CoreDataManager.sharedInstance.saveNewGroups(groups, completion: {
+                        (newMgdGroups: [ManagedGroup]) -> Void in
+                        
+                        // Add new MgdGroups to the TableView Data Source
+                        self.mgdGroups.extend(newMgdGroups)
+                        self.tableView.reloadData()
+                    })
+                    
+                    self.groupActivityIndicator.stopAnimating()
                 })
-                
-                self.groupActivityIndicator.stopAnimating()
-            })
+            }
         }
     }
     
@@ -224,7 +215,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             // Build new Group
             var newGroup = Group()
             if let name = groupname,
-                parentGroupId = self.group?.pfId {
+                parentGroupId = self.group!.pfId {
 
                 newGroup["name"] = name
                 newGroup["parentGroupId"] = parentGroupId
@@ -268,7 +259,7 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             // Build new Convo
             var newConvo = Convo()
             if let name = convoName,
-                parentGroupId = self.group?.pfId {
+                parentGroupId = self.group!.pfId {
                     
                     newConvo["name"] = name
                     newConvo["parentGroupId"] = parentGroupId
@@ -358,7 +349,9 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
                 // set the NavController's root view to be the group view with Home (displaying it's children)
                 if self.isHomeGroup(groupAtRow) {
                     
-                    var groupView = GroupTableViewController(group: groupAtRow)
+                    var groupView = GroupTableViewController()
+                    groupView.group = groupAtRow
+                    
                     self.navigationController!.pushViewController(groupView, animated: false)
                 }
                 
@@ -386,7 +379,8 @@ class GroupTableViewController: UITableViewController, UIAlertViewDelegate {
             
             var selectedGroup = self.mgdGroups[indexPath.row]
             
-            var groupView = GroupTableViewController(group: selectedGroup)
+            var groupView = GroupTableViewController()
+            groupView.group = selectedGroup
             
             self.navigationController!.pushViewController(groupView, animated: true)
         }

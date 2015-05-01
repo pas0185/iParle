@@ -40,8 +40,8 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
         }
         else {
             // User is already signed in. Push the Group View
-            var gtView = GroupTableViewController(group: nil)
-            self.navigationController?.setViewControllers([gtView], animated: true)
+            
+            self.pushHomeGroupView()
         }
     }
 
@@ -51,6 +51,55 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
     }
     
 
+    func pushHomeGroupView() {
+        
+        println("User Access view is trying to get the Home group")
+        
+        // Try to get the Home group from Core Data
+        CoreDataManager.sharedInstance.fetchGroups(forGroup: nil, completion: {
+            (groups) -> Void in
+            
+            if let mgdHomeGroup = groups.first as ManagedGroup? {
+                
+                println("User Access found Home group in Core")
+                
+                // Found a ManagedGroup; this is what we want
+                var gtView = GroupTableViewController(group: mgdHomeGroup)
+                
+                // Create a GroupTVC with the Home group and display it
+                self.navigationController?.setViewControllers([gtView], animated: true)
+            }
+            else {
+                // If that fails (first launch/installation?), then go check the Network
+                NetworkManager.sharedInstance.fetchNewGroups("0", existingGroupIds: [], completion: {
+                    (newGroups) -> Void in
+
+                    if let pfHomeGroup = newGroups.first as Group? {
+                        
+                        println("User Access found Home group from Parse/Network")
+                        
+                        // Found a PFGroup, but this is not the format we want
+                        
+                        // Go save it to Core Data
+                        CoreDataManager.sharedInstance.saveNewGroups([pfHomeGroup], completion: {
+                            (newMgdGroups) -> Void in
+                            
+                            if let mgdHomeGroup = groups.first as ManagedGroup? {
+                                
+                                println("User Access saved the Network Home group in Core")
+                                
+                                // Found a ManagedGroup; this is what we want
+                                var gtView = GroupTableViewController(group: mgdHomeGroup)
+                                
+                                // Create a GroupTVC with the Home group and display it
+                                self.navigationController?.setViewControllers([gtView], animated: true)
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    }
     
     // MARK: - PFLogInViewControllerDelegate
     func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
@@ -104,8 +153,7 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
         
         logInController.dismissViewControllerAnimated(true, completion: nil)
         
-        var gtView = GroupTableViewController(group: nil)
-        self.navigationController?.setViewControllers([gtView], animated: true)
+        self.pushHomeGroupView()
     }
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
@@ -129,8 +177,7 @@ class UserAccessViewController: UIViewController, PFLogInViewControllerDelegate,
             self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
         }
         
-        var gtView = GroupTableViewController(group: nil)
-        self.navigationController?.setViewControllers([gtView], animated: true)
+        self.pushHomeGroupView()
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
