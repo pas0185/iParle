@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setParseAppIdAndClientKey() {
         if let dictionary = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!) {
-            var appId = dictionary.objectForKey("PARSE_APPLICATION_ID") as! String
-            var clientKey = dictionary.objectForKey("PARSE_CLIENT_KEY") as! String
+            let appId = dictionary.objectForKey("PARSE_APPLICATION_ID") as! String
+            let clientKey = dictionary.objectForKey("PARSE_CLIENT_KEY") as! String
             
             Parse.setApplicationId(appId, clientKey: clientKey)
         }

@@ -261,6 +261,7 @@
 		1562E7521AF034D600BF7BF3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Abraid;
 				TargetAttributes = {
